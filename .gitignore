@@ -1,0 +1,8 @@
+a.out
+Libft/*.o
+Libft/*.a
+printf/*.o
+printf/*.a
+push_swap
+*.o
+*.txt
