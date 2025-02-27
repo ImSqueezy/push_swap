@@ -17,13 +17,15 @@
 # include "Libft/libft.h"
 # include "printf/ft_printf.h"
 
+# define SYNTAX_ERROR "Syntax Error: ./client list_of_numbers\n"
+
 typedef struct s_stack
 {
 	struct s_stack	*next;
 	int				data;
 	int				location;
-}	t_stack;
+}	t_lst;
 
-int	parser(int ac, char **av);
+int	parser(int ac, char **av, t_lst *stack);
 
 #endif

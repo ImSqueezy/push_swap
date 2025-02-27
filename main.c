@@ -14,13 +14,14 @@
 
 int main(int argc, char **argv)
 {
-	t_stack *A;
-	t_stack *B;
+	t_lst	*A;
+	t_lst	*B;
 
-	(void)A;
-	(void)B;
 	// the program is taking an unkown number of args
 	// all has to be just numbers and no duplicates
-	parser(argc, argv);
+	(void)A;
+	(void)B;
+	A = NULL;
+	parser(argc, argv, A);
 	return (0);
 }
