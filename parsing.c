@@ -19,13 +19,32 @@ int	ft_ismpoperators(int c)
 	return (1);
 }
 
-void	arg_checker(int *nbr, char *ptr)
+void	double_clear(char **p)
 {
-	// pass the string to atoi
-	// and check for unwanted chars
+	int	i;
+
+	i = -1;
+	while (p[++i])
+		free(p[i]);
+	free(p);
 }
 
-void	arg_translator(char *p, t_lst *stack)
+int	arg_checker(int *nbr, char *ptr)
+{
+	int	i;
+
+	i = 0;
+	while (ptr[i])
+	{
+		if (!ft_isdigit(ptr[i]) && !ft_ismpoperators(ptr[i]))
+			return (ft_printf("%s", PARSE_ERROR), 0);
+		i++;
+	}
+	*nbr = ft_atoi(ptr);
+	return (1);
+}
+
+void	arg_translator(char *p, t_list **stack)
 {
 	char	**splitted_arg;
 	int		nbr;
@@ -35,24 +54,21 @@ void	arg_translator(char *p, t_lst *stack)
 	i = 0;
 	while (splitted_arg[i])
 	{
-		arg_checker(&nbr, splitted_arg[i]);
-		i++;	
+		if (!arg_checker(&nbr, splitted_arg[i]))
+			return (double_clear(splitted_arg), exit(1));
+		ft_lstadd_back(stack, ft_lstnew(nbr));
+		i++;
 	}
 }
 
-int	parser(int ac, char **av, t_lst *stack)
+int	parser(int ac, char **av, t_list **stack)
 {
 	int	i;
 
-	(void)stack;
 	if (ac == 1)
 		return (ft_printf("%s", SYNTAX_ERROR), 0);
 	i = 0;
 	while (++i < ac)
 		arg_translator(av[i], stack);
-	// the whole strings are processed no error found
-	// time to store data into stack
-	i = 0;
-	while (++i < ac)
 	return (1);
 }
