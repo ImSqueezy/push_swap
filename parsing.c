@@ -32,11 +32,15 @@ void	double_clear(char **p)
 int	arg_checker(int *nbr, char *ptr)
 {
 	int	i;
-
+	
 	i = 0;
+	if (!ft_isdigit(ptr[0]) && ft_ismpoperators(ptr[0]))
+		i++;
+	if (ptr[i] == '\0')
+			return (ft_printf("%s", PARSE_ERROR), 0);
 	while (ptr[i])
 	{
-		if (!ft_isdigit(ptr[i]) && !ft_ismpoperators(ptr[i]))
+		if (!ft_isdigit(ptr[i]))
 			return (ft_printf("%s", PARSE_ERROR), 0);
 		i++;
 	}
@@ -59,6 +63,9 @@ void	arg_translator(char *p, t_list **stack)
 		ft_lstadd_back(stack, ft_lstnew(nbr));
 		i++;
 	}
+	if (i == 0)
+		return (ft_printf("%s", PARSE_ERROR), double_clear(splitted_arg),
+			exit(1));
 }
 
 int	parser(int ac, char **av, t_list **stack)
