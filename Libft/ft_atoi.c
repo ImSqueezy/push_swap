@@ -12,33 +12,30 @@
 
 #include "libft.h"
 
-static int	is_wspace(int i)
-{
-	return (i == 32 || (i >= 9 && i <= 13));
-}
-
-int	ft_atoi(const char *str)
+long	ft_atoi(const char *str)
 {
 	long	num;
+	int		right_most;
 	int		sign;
 
 	num = 0;
 	sign = 1;
-	while (is_wspace(*str))
+	if (*str == '+')
 		str++;
-	if (*str == '-' || *str == '+')
-		if (*str++ == '-')
-			sign *= -1;
-	while (*str >= '0' && *str <= '9')
+	else if (*str == '-')
 	{
-		if (num > (LLONG_MAX - (*str - '0')) / 10)
-		{
-			if (sign == 1)
-				return (-1);
-			return (0);
-		}
-		num = num * 10 + (*str - '0');
+		sign = -1;
 		str++;
 	}
-	return (((int )num) * sign);
+	while (*str >= '0' && *str <= '9')
+	{
+		right_most = (*str - '0') * sign;
+		if (num > (INT_MAX / 10) || (num == (INT_MAX / 10) && right_most > 7))
+			return 2147483649 ; 
+		if (num < (INT_MIN / 10) || (num == (INT_MIN / 10) && right_most < -8))
+			return 2147483649 ; 
+		num = num * 10 + right_most;
+		str++;
+	}
+	return (num);
 }

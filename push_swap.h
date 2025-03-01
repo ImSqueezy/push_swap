@@ -17,9 +17,11 @@
 # include "Libft/libft.h"
 # include "printf/ft_printf.h"
 
-# define SYNTAX_ERROR "Syntax Error: ./client list_of_numbers\n"
-# define PARSE_ERROR "Parse Error!\n"
+# define PARSE_ERROR "Error\n"
+# define FAIL_FLAG 2147483649 
 
-int	parser(int ac, char **av, t_list **stack);
+int		parser(int ac, char **av, t_list **stack);
+void	parse_error(char **p);
+int		ft_ismpoperators(int c);
 
 #endif

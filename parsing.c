@@ -12,24 +12,14 @@
 
 #include "push_swap.h"
 
-int	ft_ismpoperators(int c)
-{
-	if (c != '+' && c != '-')
-		return (0);
-	return (1);
-}
+/*
 
-void	double_clear(char **p)
-{
-	int	i;
+it returns error if a non digit found in the string
+unless the first char is + or -
 
-	i = -1;
-	while (p[++i])
-		free(p[i]);
-	free(p);
-}
+*/
 
-int	arg_checker(int *nbr, char *ptr)
+static int	arg_checker(char *ptr)
 {
 	int	i;
 	
@@ -37,35 +27,65 @@ int	arg_checker(int *nbr, char *ptr)
 	if (!ft_isdigit(ptr[0]) && ft_ismpoperators(ptr[0]))
 		i++;
 	if (ptr[i] == '\0')
-			return (ft_printf("%s", PARSE_ERROR), 0);
+			return (0);
 	while (ptr[i])
 	{
 		if (!ft_isdigit(ptr[i]))
-			return (ft_printf("%s", PARSE_ERROR), 0);
+			return (0);
 		i++;
 	}
-	*nbr = ft_atoi(ptr);
 	return (1);
 }
 
-void	arg_translator(char *p, t_list **stack)
+static int	duplicates_checker(t_list **head, int num)
 {
-	char	**splitted_arg;
-	int		nbr;
+    t_list *current;
+
+	current = *head;
+    while (current != NULL)
+	{
+        if (current->content == num)
+            return (0);
+        current = current->next;
+    }
+    return (1);
+}
+
+/*
+
+splits the arg "  9 3 34444" to "9" "3" "34444"
+pass it to arg_checker which checks for errors
+if no error found the number is being added to statck A
+before that duplicates is check using duplicates_checker
+
+>> leaks must be handled
+
+*/
+
+static void	arg_translator(char *p, t_list **stack)
+{
+	char	**doubly;
+	long	num;
 	int		i;
 
-	splitted_arg = ft_split(p, ' ');
+	doubly = ft_split(p, ' ');
 	i = 0;
-	while (splitted_arg[i])
+	while (doubly[i])
 	{
-		if (!arg_checker(&nbr, splitted_arg[i]))
-			return (double_clear(splitted_arg), exit(1));
-		ft_lstadd_back(stack, ft_lstnew(nbr));
+		if (!arg_checker(doubly[i]))
+			return (parse_error(doubly));
+		num = ft_atoi(doubly[i]);
+		if (num == FAIL_FLAG)
+			return (parse_error(doubly));
+		if (!duplicates_checker(stack, num))
+			return (parse_error(doubly));
+		ft_lstadd_back(stack, ft_lstnew(num));
+		free(doubly[i]);
 		i++;
 	}
 	if (i == 0)
-		return (ft_printf("%s", PARSE_ERROR), double_clear(splitted_arg),
-			exit(1));
+		return (parse_error(doubly));
+	free(doubly);
 }
 
 int	parser(int ac, char **av, t_list **stack)
@@ -73,7 +93,7 @@ int	parser(int ac, char **av, t_list **stack)
 	int	i;
 
 	if (ac == 1)
-		return (ft_printf("%s", SYNTAX_ERROR), 0);
+		return (write(2, "Error", 5), 1);
 	i = 0;
 	while (++i < ac)
 		arg_translator(av[i], stack);

@@ -1,5 +1,7 @@
-OBJS = ft_isdigit.o ft_lstnew_bonus.o ft_lstadd_back_bonus.o ft_lstlast_bonus.o ft_atoi.o ft_split.o \
-	ft_strlen.o
+OBJS = ft_isdigit.o ft_atoi.o ft_split.o ft_strlen.o \
+	ft_lstnew_bonus.o ft_lstadd_back_bonus.o ft_lstlast_bonus.o \
+	ft_lstclear_bonus.o ft_lstdelone_bonus.o \
+
 FLAGS = -Wall -Wextra -Werror -c
 COMPILE = cc $(FLAGS)
 NAME = libft.a

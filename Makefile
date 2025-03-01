@@ -1,11 +1,12 @@
 NAME = push_swap
-OBJS = parsing.o main.o
+OBJS = parsing.o parsing_utils.o main.o
 INCLUDES = printf/ft_printf.h Libft/libft.h
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 
-LIBFT_OBJS = $(addprefix Libft/, ft_isdigit.o ft_atoi.o ft_split.o ft_strlen.o ft_lstnew_bonus.o ft_lstadd_back_bonus.o \
-	ft_lstlast_bonus.o)
+LIBFT_OBJS = $(addprefix Libft/, ft_isdigit.o ft_atoi.o ft_split.o ft_strlen.o \
+	ft_lstlast_bonus.o ft_lstnew_bonus.o ft_lstadd_back_bonus.o ft_lstclear_bonus.o \
+	ft_lstdelone_bonus.o)
 LIBFT_PREFIX = Libft/
 LIBFT = Libft/libft.a
 
