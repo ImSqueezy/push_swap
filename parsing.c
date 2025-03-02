@@ -42,9 +42,9 @@ static int	duplicates_checker(t_list **head, int num)
     t_list *current;
 
 	current = *head;
-    while (current != NULL)
+    while (current)
 	{
-        if (current->content == num)
+        if (*(int *)current->content == num)
             return (0);
         current = current->next;
     }
@@ -64,28 +64,29 @@ before that duplicates is check using duplicates_checker
 
 static void	arg_translator(char *p, t_list **stack)
 {
-	char	**doubly;
-	long	num;
-	int		i;
+	char		**doubly;
+	long		num;
+	int			j;
+	static int	index;
 
 	doubly = ft_split(p, ' ');
-	i = 0;
-	while (doubly[i])
+	j = 0;
+	while (doubly[j])
 	{
-		if (!arg_checker(doubly[i]))
-			return (parse_error(doubly));
-		num = ft_atoi(doubly[i]);
+		if (!arg_checker(doubly[j]))
+			return (ft_lstclear(stack, del), parse_error(doubly));
+		num = ft_atoi(doubly[j]);
 		if (num == FAIL_FLAG)
-			return (parse_error(doubly));
+			return (ft_lstclear(stack, del), parse_error(doubly));
 		if (!duplicates_checker(stack, num))
-			return (parse_error(doubly));
-		ft_lstadd_back(stack, ft_lstnew(num));
-		free(doubly[i]);
-		i++;
+			return (ft_lstclear(stack, del), parse_error(doubly));
+		ft_lstadd_back(stack, ft_lstnew(num, index));
+		index++;
+		j++;
 	}
-	if (i == 0)
-		return (parse_error(doubly));
-	free(doubly);
+	if (j == 0)
+		return (ft_lstclear(stack, del), parse_error(doubly));
+	free_doubly(doubly);
 }
 
 int	parser(int ac, char **av, t_list **stack)

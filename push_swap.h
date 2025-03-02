@@ -21,7 +21,9 @@
 # define FAIL_FLAG 2147483649 
 
 int		parser(int ac, char **av, t_list **stack);
-void	parse_error(char **p);
 int		ft_ismpoperators(int c);
+void	parse_error(char **p);
+void	free_doubly(char **ptr);
+void	del(void *ptr);
 
 #endif

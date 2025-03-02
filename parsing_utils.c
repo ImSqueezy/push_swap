@@ -15,13 +15,24 @@
 void	parse_error(char **p)
 {
 	write(2, "Error", 5);
-	if (*p)
-	{
-		while (*p)
-			free(p++);
-		free(p);
-	}
+	free_doubly(p);
 	exit(1);
+}
+
+void	del(void *ptr)
+{
+	free(ptr);
+}
+
+void	free_doubly(char **ptr)
+{
+	while (*ptr)
+	{
+		free(*ptr);
+		*ptr = NULL;
+	}
+	free(ptr);
+	ptr = NULL;
 }
 
 int	ft_ismpoperators(int c)
@@ -30,4 +41,3 @@ int	ft_ismpoperators(int c)
 		return (0);
 	return (1);
 }
-

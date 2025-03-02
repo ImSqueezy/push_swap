@@ -11,15 +11,30 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "../push_swap.h"
 
-t_list	*ft_lstnew(int content)
+t_list	*ft_lstnew(int content, int index)
 {
 	t_list	*lst;
 
 	lst = (t_list *)malloc(sizeof(t_list));
 	if (!lst)
 		return (NULL);
-	lst->content = content;
+	lst->content = malloc(sizeof(int));
+	if (!lst->content)
+	{
+		free(lst);
+		return (NULL);
+	}
+	lst->index = malloc(sizeof(int));
+	if (!lst->index)
+	{
+		free(lst->content);
+		free(lst);
+		return (NULL);
+	}
+	*(int *)lst->content = content;
+	*(int *)lst->index = index;
 	lst->next = NULL;
 	return (lst);
 }

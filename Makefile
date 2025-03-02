@@ -20,10 +20,10 @@ all: $(NAME)
 $(NAME): $(LIBFT) $(PRINTF) $(OBJS)
 	cc $(CFLAGS) $(OBJS) $(LIBFT) $(PRINTF) -o push_swap
 
-$(LIBFT):
+$(LIBFT): $(LIBFT_OBJS)
 	make -C $(LIBFT_PREFIX)
 
-$(PRINTF):
+$(PRINTF): $(PRINTF_OBJS)
 	make -C $(PRINTF_PREFIX)
 
 %.o: %.c $(INCLUDES)
