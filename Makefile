@@ -1,7 +1,9 @@
 NAME = push_swap
-OBJS = parsing.o parsing_utils.o main.o
-INCLUDES = printf/ft_printf.h Libft/libft.h
 
+OPERATIONS = $(addprefix Operations/, push.o swap.o)
+OBJS = parsing.o parsing_utils.o main.o \
+	$(OPERATIONS)
+INCLUDES = printf/ft_printf.h Libft/libft.h Operations/operations.h
 CFLAGS = -Wall -Wextra -Werror -g
 
 LIBFT_OBJS = $(addprefix Libft/, ft_isdigit.o ft_atoi.o ft_split.o ft_strlen.o \

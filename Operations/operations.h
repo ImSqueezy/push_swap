@@ -1,30 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   operations.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aouaalla <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/27 15:12:29 by aouaalla          #+#    #+#             */
-/*   Updated: 2025/02/27 15:12:29 by aouaalla         ###   ########.fr       */
+/*   Created: 2025/03/03 12:47:34 by aouaalla          #+#    #+#             */
+/*   Updated: 2025/03/03 12:47:36 by aouaalla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef OPERATIONS_H
+# define OPERATIONS_H
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+# include "../push_swap.h"
 
-# include "Libft/libft.h"
-# include "printf/ft_printf.h"
-# include "Operations/operations.h"
+void	sa(t_list **head);
+void	sb(t_list **head);
 
-# define PARSE_ERROR "Error\n"
-# define FAIL_FLAG 2147483649 
-
-int		parser(int ac, char **av, t_list **stack);
-int		ft_ismpoperators(int c);
-void	parse_error(char **p);
-void	free_doubly(char **ptr);
-void	del(void *ptr);
+void	pa(t_list **dst, t_list **src);
+void	pb(t_list **dst, t_list **src);
 
 #endif
