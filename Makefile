@@ -1,6 +1,6 @@
 NAME = push_swap
 
-OPERATIONS = $(addprefix Operations/, push.o swap.o)
+OPERATIONS = $(addprefix Operations/, push.o swap.o rotate.o rrotate.o)
 OBJS = parsing.o parsing_utils.o main.o \
 	$(OPERATIONS)
 INCLUDES = printf/ft_printf.h Libft/libft.h Operations/operations.h
@@ -8,7 +8,7 @@ CFLAGS = -Wall -Wextra -Werror -g
 
 LIBFT_OBJS = $(addprefix Libft/, ft_isdigit.o ft_atoi.o ft_split.o ft_strlen.o \
 	ft_lstlast_bonus.o ft_lstnew_bonus.o ft_lstadd_back_bonus.o ft_lstclear_bonus.o \
-	ft_lstdelone_bonus.o)
+	ft_lstdelone_bonus.o ft_lstlast_bonus.o ft_lstsize_bonus.o)
 LIBFT_PREFIX = Libft/
 LIBFT = Libft/libft.a
 
