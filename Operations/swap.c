@@ -17,8 +17,9 @@ void	sa(t_list **head)
 	t_list	*curr;
 	t_list	*next;
 
-	if (!*head || !(*head)->next)
+	if (ft_lstsize(*head) < 2)
 		return ;
+	ft_printf("sa\n");
 	curr = *head;
 	next = (*head)->next;
 	curr->next = next->next;
@@ -31,8 +32,9 @@ void	sb(t_list **head)
 	t_list	*curr;
 	t_list	*next;
 
-	if (!*head || !(*head)->next)
+	if (ft_lstsize(*head) < 2)
 		return ;
+	ft_printf("sa\n");
 	curr = *head;
 	next = (*head)->next;
 	curr->next = next->next;

@@ -26,11 +26,5 @@ int		ft_ismpoperators(int c);
 void	parse_error(char **p);
 void	free_doubly(char **ptr);
 void	del(void *ptr);
-void	ra(t_list **stack_a);
-void	rb(t_list **stack_b);
-void	rr(t_list **stack_a, t_list **stack_b);
-void	rra(t_list **stack_a);
-void	rrb(t_list **stack_b);
-void	rrr(t_list **stack_a, t_list **stack_b);
 
 #endif
