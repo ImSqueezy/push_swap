@@ -24,6 +24,7 @@ int	main(int argc, char **argv)
 	stack_b = NULL;
 	t_list *cur;
 	parser(argc, argv, &stack_a);
+	push_swap(&stack_a, &stack_b);
 	cur = stack_a;
 	while (cur)
 	{

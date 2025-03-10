@@ -20,7 +20,7 @@ void	ra(t_list **stack_a)
 	// do nothing if the list is NULL or has only one node
 	if (ft_lstsize(*stack_a) < 2)
 		return ;
-	ft_printf("rb\n");
+	ft_printf("ra\n");
 	tmp = (*stack_a)->next; // second is saved
 	// add the first to back head becomes the last
 	last = ft_lstlast(*stack_a); // i have the last
