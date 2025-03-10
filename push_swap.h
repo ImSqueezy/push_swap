@@ -19,7 +19,7 @@
 # include "Operations/operations.h"
 
 # define PARSE_ERROR "Error\n"
-# define FAIL_FLAG 2147483649 
+# define FAIL_FLAG 2147483648
 
 int		parser(int ac, char **av, t_list **stack);
 int		ft_ismpoperators(int c);

@@ -20,8 +20,8 @@
 typedef struct s_stack
 {
 	struct s_stack	*next;
-	void			*content;
-	void			*index;
+	int				content;
+	int				index;
 }	t_list;
 
 int		ft_isalpha(int c);
@@ -60,7 +60,7 @@ void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 
-t_list	*ft_lstnew(int content, int index); // Used and modified
+t_list	*ft_lstnew(int content); // Used and modified
 void	ft_lstadd_front(t_list **lst, t_list *new);
 int		ft_lstsize(t_list *lst);
 t_list	*ft_lstlast(t_list *lst); // Used

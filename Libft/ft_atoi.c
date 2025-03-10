@@ -31,9 +31,9 @@ long	ft_atoi(const char *str)
 	{
 		right_most = (*str - '0') * sign;
 		if (num > (INT_MAX / 10) || (num == (INT_MAX / 10) && right_most > 7))
-			return 2147483649 ; 
+			return 2147483648 ; 
 		if (num < (INT_MIN / 10) || (num == (INT_MIN / 10) && right_most < -8))
-			return 2147483649 ; 
+			return 2147483648 ; 
 		num = num * 10 + right_most;
 		str++;
 	}

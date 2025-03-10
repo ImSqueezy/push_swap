@@ -21,7 +21,7 @@ unless the first char is + or -
 
 static int	arg_checker(char *ptr)
 {
-	int	i;
+	unsigned int	i;
 	
 	i = 0;
 	if (!ft_isdigit(ptr[0]) && ft_ismpoperators(ptr[0]))
@@ -44,7 +44,7 @@ static int	duplicates_checker(t_list **head, int num)
 	current = *head;
     while (current)
 	{
-        if (*(int *)current->content == num)
+        if (current->content == num)
             return (0);
         current = current->next;
     }
@@ -62,12 +62,31 @@ before that duplicates is check using duplicates_checker
 
 */
 
+void	data_indexer(t_list *lst)
+{
+	t_list			*cur;
+	t_list			*next;
+
+	next = lst;
+	while (next)
+	{
+		cur = lst;
+		while (cur)
+		{
+			if (next->content > cur->content)
+				next->index++;
+			cur = cur->next;
+		}
+		next = next->next;
+	}
+}
+
+
 static void	arg_translator(char *p, t_list **stack)
 {
-	char		**doubly;
-	long		num;
-	int			j;
-	static int	index;
+	char			**doubly;
+	long			num;
+	unsigned int	j;
 
 	doubly = ft_split(p, ' ');
 	j = 0;
@@ -80,23 +99,23 @@ static void	arg_translator(char *p, t_list **stack)
 			return (ft_lstclear(stack, del), parse_error(doubly));
 		if (!duplicates_checker(stack, num))
 			return (ft_lstclear(stack, del), parse_error(doubly));
-		ft_lstadd_back(stack, ft_lstnew(num, index));
-		index++;
+		ft_lstadd_back(stack, ft_lstnew(num));
 		j++;
 	}
 	if (j == 0)
-		return (ft_lstclear(stack, del), parse_error(doubly));
+	return (ft_lstclear(stack, del), parse_error(doubly));
 	free_doubly(doubly);
 }
 
 int	parser(int ac, char **av, t_list **stack)
 {
 	int	i;
-
+	
 	if (ac == 1)
-		return (write(2, "Error", 5), 1);
+	return (write(2, "Error", 5), 1);
 	i = 0;
 	while (++i < ac)
-		arg_translator(av[i], stack);
+	arg_translator(av[i], stack);
+	data_indexer(*stack);
 	return (1);
 }
