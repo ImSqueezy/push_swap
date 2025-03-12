@@ -1,98 +1,5 @@
 #include "push_swap.h"
 
-static int	sorted(t_list *lst)
-{
-	while (lst && lst->next)
-	{
-		if (lst->content > lst->next->content)
-			return (0);
-		lst = lst->next;
-	}
-	return (1);
-}
-
-// sort_a and b here
-void	sort_two(t_list **lst)
-{
-	if ((*lst)->content > (*lst)->next->content)
-		sa(lst);
-}
-
-void	sort_three(t_list **lst)
-{
-	t_list	*cur;
-	int		max;
-
-	max = (*lst)->content;
-	cur = *lst;
-	while (cur)
-	{
-		if (max < cur->content)
-			max = cur->content;
-		cur = cur->next;
-	}
-	if (max == (*lst)->content)
-		ra(lst);
-	else if (max == (*lst)->next->content)
-		rra(lst);
-	sort_two(lst);
-}
-
-void	sort_four(t_list **left_hand, t_list **right_hand)
-{
-	t_list	*cur;
-	int		min;
-
-	min = (*left_hand)->content;
-	cur = *left_hand;
-	while (cur)
-	{
-		if (min > cur->content)
-			min = cur->content;
-		cur = cur->next;
-	}
-	while (1)
-	{
-		if (min == (*left_hand)->next->content)
-			ra(left_hand);
-		else if (min != (*left_hand)->content)
-			rra(left_hand);
-		else
-			break ;
-	}
-	pb(right_hand, left_hand);
-	sort_three(left_hand);
-	pa(left_hand, right_hand);
-}
-
-void	sort_five(t_list **left_hand, t_list **right_hand)
-{
-	t_list *cur;
-	int		min;
-
-
-	min = (*left_hand)->content;
-	cur = *left_hand;
-	while (cur)
-	{
-		if (min > cur->content)
-			min = cur->content;
-		cur = cur->next;
-	}
-	while (1)
-	{
-		if (min == (*left_hand)->next->content)
-			ra(left_hand);
-		else if (min != (*left_hand)->content)
-			rra(left_hand);
-		else
-			break ;
-	}
-	pb(right_hand, left_hand);
-	sort_four(left_hand, right_hand);
-	pa(left_hand, right_hand);
-}
-
 void	mini_sort(t_list **stack_a, t_list **stack_b, int size)
 {
 	if (size == 2)
@@ -105,14 +12,70 @@ void	mini_sort(t_list **stack_a, t_list **stack_b, int size)
 		sort_five(stack_a, stack_b);
 }
 
-	/*      test mini sort       */
+void	big_sort(t_list **stack_b, t_list **stack_a, int size)
+{
+	t_list	*tmp;
+	int		x;
+	int		i;
+
+	i = 0;
+	x = divide_definition(size);
+	while (*stack_a)
+	{
+		tmp = *stack_a;
+		if (tmp->index <= i)
+		{
+			pb(stack_b, stack_a);
+			i++;
+		}
+		else if (tmp->index <= i + x)
+		{
+			pb(stack_b, stack_a);
+			rb(stack_b);
+			i++;
+		}
+		else
+			ra(stack_a);
+	}
+}
+
+void	restore(t_list **stack_a, t_list **stack_b)
+{
+	int	max;
+	int	size;
+
+	size = ft_lstsize(*stack_b);
+	while (size)
+	{
+		positioning(stack_b);
+		max = max_pos(*stack_b);
+		if (max < size / 2)
+		{
+			while ((*stack_b)->pos != max)
+				rb(stack_b);
+		}
+		else
+		{
+			while ((*stack_b)->pos != max)
+				rrb(stack_b);
+		}
+		pa(stack_a, stack_b);
+		size--;
+	}
+}
+
 void	push_swap(t_list **stack_a, t_list **stack_b)
 {
 	int	size;
-	(void)stack_b;
+
 	if (sorted(*stack_a))
 		return (ft_lstclear(stack_a, del), exit(0));
 	size = ft_lstsize(*stack_a);
 	if (size <= 5)
 		mini_sort(stack_a, stack_b, size);
+	else
+	{
+		big_sort(stack_b, stack_a, size);
+		restore(stack_a, stack_b);
+	}
 }

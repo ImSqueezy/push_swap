@@ -22,6 +22,7 @@ typedef struct s_stack
 	struct s_stack	*next;
 	int				content;
 	int				index;
+	int				pos;
 }	t_list;
 
 int		ft_isalpha(int c);

@@ -1,8 +1,8 @@
 NAME = push_swap
 
 OPERATIONS = $(addprefix Operations/, push.o swap.o rotate.o rrotate.o)
-OBJS = parsing.o parsing_utils.o main.o push_swap.o \
-	$(OPERATIONS)
+OBJS = parsing.o parsing_utils.o main.o push_swap.o push_swap_utils.o \
+	mini_sorts.o $(OPERATIONS)
 INCLUDES = printf/ft_printf.h Libft/libft.h Operations/operations.h
 CFLAGS = -Wall -Wextra -Werror -g
 

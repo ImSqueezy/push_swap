@@ -27,5 +27,13 @@ void	parse_error(char **p);
 void	free_doubly(char **ptr);
 void	del(void *ptr);
 void	push_swap(t_list **stack_a, t_list **stack_b);
+void	sort_two(t_list **lst);
+void	sort_three(t_list **lst);
+void	sort_four(t_list **left_hand, t_list **right_hand);
+void	sort_five(t_list **left_hand, t_list **right_hand);
+void	positioning(t_list **stack);
+int		sorted(t_list *lst);
+int		divide_definition(int size);
+int		max_pos(t_list *stack_b);
 
 #endif

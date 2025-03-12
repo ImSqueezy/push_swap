@@ -14,7 +14,7 @@
 
 void	parse_error(char **p)
 {
-	write(2, "Error", 5);
+	write(2, "Error\n", 6);
 	free_doubly(p);
 	exit(1);
 }
