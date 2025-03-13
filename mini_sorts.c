@@ -60,6 +60,8 @@ void	sort_four(t_list **left_hand, t_list **right_hand)
 		else
 			break ;
 	}
+	if (sorted(*left_hand))
+		return ;
 	pb(right_hand, left_hand);
 	sort_three(left_hand);
 	pa(left_hand, right_hand);
@@ -87,6 +89,8 @@ void	sort_five(t_list **left_hand, t_list **right_hand)
 		else
 			break ;
 	}
+	if (sorted(*left_hand))
+		return ;
 	pb(right_hand, left_hand);
 	sort_four(left_hand, right_hand);
 	pa(left_hand, right_hand);
