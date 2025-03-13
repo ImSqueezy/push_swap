@@ -1,8 +1,10 @@
+NAME_BONUS = checker
 NAME = push_swap
 
 OPERATIONS = $(addprefix Operations/, push.o swap.o rotate.o rrotate.o)
 OBJS = parsing.o parsing_utils.o main.o push_swap.o push_swap_utils.o \
 	mini_sorts.o $(OPERATIONS)
+BOBJS = $(addprefix Checker/, main.o)
 INCLUDES = printf/ft_printf.h Libft/libft.h Operations/operations.h
 CFLAGS = -Wall -Wextra -Werror -g
 
@@ -19,8 +21,13 @@ PRINTF = printf/libftprintf.a
 
 all: $(NAME)
 
+bonus: $(LIBFT) $(PRINTF) $(BOBJS) $(NAME_BONUS)
+
 $(NAME): $(LIBFT) $(PRINTF) $(OBJS)
-	cc $(CFLAGS) $(OBJS) $(LIBFT) $(PRINTF) -o push_swap
+	cc $(CFLAGS) $(OBJS) $(LIBFT) $(PRINTF) -o $(NAME)
+
+$(NAME_BONUS):
+	cc $(CFLAGS) $(BOBJS) $(LIBFT) -o $(NAME_BONUS)
 
 $(LIBFT): $(LIBFT_OBJS)
 	make -C $(LIBFT_PREFIX)
@@ -32,9 +39,9 @@ $(PRINTF): $(PRINTF_OBJS)
 	cc $(CFLAGS) -c $< -o $@
 
 clean:
-	@rm -f $(OBJS) $(LIBFT_OBJS) $(PRINTF_OBJS)
+	@rm -f $(OBJS) $(LIBFT_OBJS) $(PRINTF_OBJS) $(BOBJS)
 
 fclean: clean
-	@rm -f $(NAME) $(LIBFT) $(PRINTF)
+	@rm -f $(NAME) $(LIBFT) $(PRINTF) $(NAME_BONUS)
 
 re: fclean all
