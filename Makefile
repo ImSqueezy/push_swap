@@ -1,10 +1,11 @@
 NAME_BONUS = checker
 NAME = push_swap
 
+GNL_OBJS = $(addprefix gnl/, get_next_line.o get_next_line_utils.o)
 OPERATIONS = $(addprefix Operations/, push.o swap.o rotate.o rrotate.o)
 OBJS = parsing.o parsing_utils.o main.o push_swap.o push_swap_utils.o \
 	mini_sorts.o $(OPERATIONS)
-BOBJS = $(addprefix Checker/, main.o)
+BOBJS = $(addprefix Checker/, main.o parsing_bonus.o parsing_utils_bonus.o $(GNL_OBJS))
 INCLUDES = printf/ft_printf.h Libft/libft.h Operations/operations.h
 CFLAGS = -Wall -Wextra -Werror -g
 
@@ -21,12 +22,12 @@ PRINTF = printf/libftprintf.a
 
 all: $(NAME)
 
-bonus: $(LIBFT) $(PRINTF) $(BOBJS) $(NAME_BONUS)
+bonus: $(NAME_BONUS)
 
 $(NAME): $(LIBFT) $(PRINTF) $(OBJS)
 	cc $(CFLAGS) $(OBJS) $(LIBFT) $(PRINTF) -o $(NAME)
 
-$(NAME_BONUS):
+$(NAME_BONUS): $(LIBFT) $(PRINTF) $(BOBJS)
 	cc $(CFLAGS) $(BOBJS) $(LIBFT) -o $(NAME_BONUS)
 
 $(LIBFT): $(LIBFT_OBJS)

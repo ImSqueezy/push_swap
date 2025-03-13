@@ -102,6 +102,6 @@ void	push_swap(t_list **stack_a, t_list **stack_b)
 		big_sort(stack_b, stack_a, size);
 		restore(stack_a, stack_b);
 	}
-	ft_lstclear(stack_b, del);
+	ft_lstclear(stack_a, del);
 	ft_lstclear(stack_b, del);
 }
