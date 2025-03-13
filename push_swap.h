@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
@@ -35,5 +34,6 @@ void	positioning(t_list **stack);
 int		sorted(t_list *lst);
 int		divide_definition(int size);
 int		max_pos(t_list *stack_b);
+int		stack_order(t_list *stack_a);
 
 #endif

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap_utils.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aouaalla <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/13 15:17:42 by aouaalla          #+#    #+#             */
+/*   Updated: 2025/03/13 15:17:53 by aouaalla         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int	max_pos(t_list *stack_b)
@@ -27,10 +39,27 @@ int	divide_definition(int size)
 	int	divide_by;
 
 	if (size <= 100)
-		divide_by = 16;
+		divide_by = 5;
 	else
-		divide_by = 36;
+		divide_by = 14;
+	divide_by = size / divide_by;
 	return (divide_by);
+}
+
+int	stack_order(t_list *stack_a)
+{
+	int	i;
+
+	i = 0;
+	while (stack_a && stack_a->next)
+	{
+		if (stack_a->content < stack_a->next->content)
+			i--;
+		else
+			i++;
+		stack_a = stack_a->next;
+	}
+	return (i);
 }
 
 void	positioning(t_list **stack)

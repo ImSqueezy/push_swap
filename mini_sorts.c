@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   mini_sorts.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aouaalla <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/13 15:39:26 by aouaalla          #+#    #+#             */
+/*   Updated: 2025/03/13 15:39:27 by aouaalla         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	sort_two(t_list **lst)
@@ -55,9 +67,8 @@ void	sort_four(t_list **left_hand, t_list **right_hand)
 
 void	sort_five(t_list **left_hand, t_list **right_hand)
 {
-	t_list *cur;
+	t_list	*cur;
 	int		min;
-
 
 	min = (*left_hand)->content;
 	cur = *left_hand;
