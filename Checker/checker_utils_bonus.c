@@ -16,6 +16,7 @@ void		parsing_ko(t_list **sa, t_list **sb, t_action **lst)
 	ft_lstclear(sb, del);
 	checker_lstclear(lst, del);
 	write(1, "KO", 2);
+	exit(1);
 }
 
 int	sorted(t_list *lst)
