@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "operations.h"
+#include "operations_bonus.h"
 
 void	pa(t_list **dst, t_list **src)
 {
@@ -19,7 +19,6 @@ void	pa(t_list **dst, t_list **src)
 
 	if (!*src)
 		return ;
-	ft_printf("pa\n");
 	new_head = *src;
 	*src = (*src)->next;
 	old_head = *dst;
@@ -34,7 +33,6 @@ void	pb(t_list **dst, t_list **src)
 
 	if (!*src)
 		return ;
-	ft_printf("pb\n");
 	new_head = *src;
 	*src = (*src)->next;
 	old_head = *dst;

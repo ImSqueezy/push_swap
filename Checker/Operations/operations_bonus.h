@@ -13,7 +13,7 @@
 #ifndef OPERATIONS_H
 # define OPERATIONS_H
 
-# include "../push_swap.h"
+# include "../../push_swap.h"
 
 void	sa(t_list **head);
 void	sb(t_list **head);

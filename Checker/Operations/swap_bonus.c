@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "operations.h"
+#include "operations_bonus.h"
 
 void	sa(t_list **head)
 {
@@ -19,7 +19,6 @@ void	sa(t_list **head)
 
 	if (ft_lstsize(*head) < 2)
 		return ;
-	ft_printf("sa\n");
 	curr = *head;
 	next = (*head)->next;
 	curr->next = next->next;
@@ -34,7 +33,6 @@ void	sb(t_list **head)
 
 	if (ft_lstsize(*head) < 2)
 		return ;
-	ft_printf("sa\n");
 	curr = *head;
 	next = (*head)->next;
 	curr->next = next->next;

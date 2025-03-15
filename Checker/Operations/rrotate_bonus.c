@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "operations.h"
+#include "operations_bonus.h"
 
 void	rra(t_list **stack_a)
 {
@@ -19,7 +19,6 @@ void	rra(t_list **stack_a)
 
 	if (ft_lstsize(*stack_a) < 2)
 		return ;
-	ft_printf("rra\n");
 	curr = *stack_a;
 	while (curr->next->next)
 		curr = curr->next;
@@ -36,7 +35,6 @@ void	rrb(t_list **stack_b)
 
 	if (ft_lstsize(*stack_b) < 2)
 		return ;
-	ft_printf("rrb\n");
 	curr = *stack_b;
 	while (curr->next->next)
 		curr = curr->next;
