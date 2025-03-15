@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include "checker_bonus.h"
 
 t_action	*checker_lstlast(t_action *lst)
@@ -21,6 +22,8 @@ void	checker_lstadd_back(t_action **lst, t_action *new)
 		return ;
 	}
 	ptr = checker_lstlast(*lst);
+	if (!ptr)
+		return ;	
 	(*ptr).next = new;
 }
 

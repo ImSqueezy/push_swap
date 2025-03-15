@@ -2,6 +2,8 @@
 
 int	action_validator(char *ptr)
 {
+	if (!ptr)
+		return (1);
 	if (ft_strcmp(ptr, "rra\n") && ft_strcmp(ptr, "rrb\n")
 		&& ft_strcmp(ptr, "rrr\n") && ft_strcmp(ptr, "ra\n")
 		&& ft_strcmp(ptr, "rb\n") && ft_strcmp(ptr, "rr\n")
@@ -19,8 +21,6 @@ int	actions_reader(t_action **head)
 	while (1)
 	{
 		action = get_next_line(0);
-		if (!action)
-			break ;
 		if (!action_validator(action))
 			return (0);
 		checker_lstadd_back(head, checker_lstnew(action));
