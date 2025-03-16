@@ -25,6 +25,7 @@ int		ft_ismpoperators(int c);
 void	parse_error(char **p);
 void	free_doubly(char **ptr);
 void	del(void *ptr);
+
 void	push_swap(t_list **stack_a, t_list **stack_b);
 void	sort_two(t_list **lst);
 void	sort_three(t_list **lst);

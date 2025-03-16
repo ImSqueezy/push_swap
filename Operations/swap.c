@@ -34,7 +34,7 @@ void	sb(t_list **head)
 
 	if (ft_lstsize(*head) < 2)
 		return ;
-	ft_printf("sa\n");
+	ft_printf("sb\n");
 	curr = *head;
 	next = (*head)->next;
 	curr->next = next->next;

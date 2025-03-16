@@ -92,8 +92,6 @@ int	parser(int ac, char **av, t_list **stack)
 {
 	int	i;
 
-	if (ac == 1)
-		return (write(2, "Error", 5), 1);
 	i = 0;
 	while (++i < ac)
 		arg_translator(av[i], stack);
