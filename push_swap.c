@@ -55,7 +55,7 @@ void	big_sort(t_list **stack_b, t_list **stack_a, int size)
 	{
 		if (!push_b(stack_a, stack_b, &i, x))
 		{
-			if (order)
+			if (!order)
 				rra(stack_a);
 			else
 				ra(stack_a);

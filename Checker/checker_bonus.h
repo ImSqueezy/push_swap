@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   checker_bonus.h                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aouaalla <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/16 15:29:24 by aouaalla          #+#    #+#             */
+/*   Updated: 2025/03/16 15:29:25 by aouaalla         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef CHECKER_BONUS_H
 # define CHECKER_BONUS_H
@@ -9,7 +20,7 @@
 # define PARSE_ERROR "Error\n"
 # define FAIL_FLAG 2147483648
 
-typedef struct
+typedef struct s_action
 {
 	char	*action;
 	void	*next;

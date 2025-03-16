@@ -1,4 +1,15 @@
-#include <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   lst_bonus.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aouaalla <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/16 15:30:19 by aouaalla          #+#    #+#             */
+/*   Updated: 2025/03/16 15:30:20 by aouaalla         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "checker_bonus.h"
 
 t_action	*checker_lstlast(t_action *lst)
@@ -22,8 +33,6 @@ void	checker_lstadd_back(t_action **lst, t_action *new)
 		return ;
 	}
 	ptr = checker_lstlast(*lst);
-	if (!ptr)
-		return ;	
 	(*ptr).next = new;
 }
 
@@ -58,5 +67,6 @@ void	checker_lstdelone(t_action *lst, void (*del)(void *))
 {
 	if (!lst || !del)
 		return ;
+	del(lst->action);
 	free(lst);
 }

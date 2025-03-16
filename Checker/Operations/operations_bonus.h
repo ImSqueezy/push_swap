@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operations.h                                       :+:      :+:    :+:   */
+/*   operations_bonus.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aouaalla <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/03 12:47:34 by aouaalla          #+#    #+#             */
-/*   Updated: 2025/03/03 12:47:36 by aouaalla         ###   ########.fr       */
+/*   Created: 2025/03/16 15:32:29 by aouaalla          #+#    #+#             */
+/*   Updated: 2025/03/16 15:32:30 by aouaalla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef OPERATIONS_H
-# define OPERATIONS_H
+#ifndef OPERATIONS_BONUS_H
+# define OPERATIONS_BONUS_H
 
 # include "../../push_swap.h"
 

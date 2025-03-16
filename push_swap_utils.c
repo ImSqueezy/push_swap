@@ -53,13 +53,11 @@ int	stack_order(t_list *stack_a)
 	i = 0;
 	while (stack_a && stack_a->next)
 	{
-		if (stack_a->content < stack_a->next->content)
-			i--;
-		else
+		if (stack_a->content - stack_a->next->content > 4)
 			i++;
 		stack_a = stack_a->next;
 	}
-	return (i);
+	return ((i * 100 / ft_lstsize(stack_a) >= 60));
 }
 
 void	positioning(t_list **stack)

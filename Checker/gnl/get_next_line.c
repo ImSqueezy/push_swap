@@ -14,8 +14,11 @@
 
 static void	clear(char **p)
 {
-	free(*p);
-	*p = NULL;
+	if (p)
+	{
+		free(*p);
+		*p = NULL;
+	}
 }
 
 static char	*init(int fd, char *s, char *buffer)
@@ -71,7 +74,7 @@ char	*get_next_line(int fd)
 
 	p = NULL;
 	if (fd < 0 || BUFFER_SIZE >= INT_MAX || BUFFER_SIZE <= 0)
-		return (NULL);
+		return (clear(&st), NULL);
 	p = (char *)malloc(((BUFFER_SIZE + 1)) * sizeof(char));
 	if (!p)
 		return (p);

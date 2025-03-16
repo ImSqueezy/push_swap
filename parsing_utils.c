@@ -26,10 +26,14 @@ void	del(void *ptr)
 
 void	free_doubly(char **ptr)
 {
-	while (*ptr)
+	int	i;
+
+	i = 0;
+	while (ptr[i])
 	{
-		free(*ptr);
-		*ptr = NULL;
+		free(ptr[i]);
+		ptr[i] = NULL;
+		i++;
 	}
 	free(ptr);
 	ptr = NULL;
