@@ -28,7 +28,7 @@ void	parsing_ko(t_list **sa, t_list **sb, t_action **lst)
 	ft_lstclear(sb, del);
 	checker_lstclear(lst, del);
 	get_next_line(-1);
-	write(1, "KO", 2);
+	write(1, "Error\n", 6);
 	exit(1);
 }
 

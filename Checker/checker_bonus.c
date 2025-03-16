@@ -28,12 +28,13 @@ int	actions_reader(t_action **head)
 {
 	char	*action;
 
-	while (1)
+	action = get_next_line(0);
+	while (action)
 	{
-		action = get_next_line(0);
 		checker_lstadd_back(head, checker_lstnew(action));
 		if (!action_validator(action))
 			return (0);
+		action = get_next_line(0);
 	}
 	return (1);
 }
@@ -76,7 +77,7 @@ int	main(int argc, char **argv)
 	if (!actions_reader(&head))
 		parsing_ko(&stack_a, &stack_b, &head);
 	do_action(&stack_a, &stack_b, head);
-	if (!sorted(stack_a))
+	if (!sorted(stack_a) || ft_lstsize(stack_b))
 		write(1, "KO", 2);
 	else
 		write(1, "OK", 2);

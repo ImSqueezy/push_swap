@@ -10,11 +10,10 @@ OBJS = parsing.o parsing_utils.o main.o push_swap.o push_swap_utils.o \
 BOBJS = $(addprefix Checker/, checker_bonus.o checker_utils_bonus.o \
 	doaction_utils_bonus.o parsing_bonus.o parsing_utils_bonus.o lst_bonus.o \
 	$(GNL_OBJS) $(BONUS_OPERATIONS))
-INCLUDES = printf/ft_printf.h Libft/libft.h Operations/operations.h \
-	Checker/Operations/operations_bonus.h Checker/gnl/get_next_line.h \
+INCLUDES = printf/ft_printf.h Libft/libft.h Operations/operations.h push_swap.h
+BONUS_INCLUDES = Checker/Operations/operations_bonus.h Checker/gnl/get_next_line.h \
 	Checker/checker_bonus.h
 CFLAGS = -Wall -Wextra -Werror
-
 LIBFT_OBJS = $(addprefix $(LIBFT_PREFIX), ft_isdigit.o ft_atoi.o ft_split.o ft_strlen.o \
 	ft_lstlast_bonus.o ft_lstnew_bonus.o ft_lstadd_back_bonus.o ft_lstclear_bonus.o \
 	ft_lstdelone_bonus.o ft_lstlast_bonus.o ft_lstsize_bonus.o)
@@ -41,6 +40,9 @@ $(LIBFT): $(LIBFT_OBJS)
 
 $(PRINTF): $(PRINTF_OBJS)
 	make -C $(PRINTF_PREFIX)
+
+Checker/%.o: Checker/%.c $(BONUS_INCLUDES)
+	cc $(CFLAGS) -c $< -o $@
 
 %.o: %.c $(INCLUDES)
 	cc $(CFLAGS) -c $< -o $@
